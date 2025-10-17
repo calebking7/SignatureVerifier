@@ -1,32 +1,10 @@
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
 
-// Load environment variables from .env file
-async function loadEnvVariables() {
-    try {
-        const response = await fetch('/.env');
-        const text = await response.text();
-        const vars = {};
-        text.split('\n').forEach(line => {
-            const [key, ...value] = line.split('=');
-            if (key && !key.startsWith('#')) {
-                vars[key.trim()] = value.join('=').trim();
-            }
-        });
-        return vars;
-    } catch (error) {
-        console.error('Failed to load .env file:', error);
-        return {};
-    }
-}
-
-// Initialize environment variables
-const env = await loadEnvVariables();
-
-// Supabase Configuration
-export const SUPABASE_URL = env.SUPABASE_URL || '';
-export const SUPABASE_KEY = env.SUPABASE_KEY || '';
+// Replace these with your Supabase project credentials
+export const SUPABASE_URL = "https://tervkeyytdpqrxwejmli.supabase.co";
+export const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRlcnZrZXl5dGRwcXJ4d2VqbWxpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjA2NzA5OTcsImV4cCI6MjA3NjI0Njk5N30.DU-7FdWu9rPTr5Hcj_vSY7WHk0-DvivmETg1-MWLZi0";
 export const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
-// Gemini Configuration
-export const GEMINI_API_KEY = env.GEMINI_API_KEY || '';
-export const GEMINI_MODEL = env.GEMINI_MODEL || 'gemini-2.0-flash';
+// Replace with your Gemini API key
+export const GEMINI_API_KEY = "AIzaSyBuhjoSxSw3cjyGMNmrPFoMnd-ZtDKcPHk";
+export const GEMINI_MODEL = "gemini-2.0-flash"; // Example model
