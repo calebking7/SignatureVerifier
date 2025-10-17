@@ -46,12 +46,12 @@ function validateImageQuality(file) {
   return new Promise((resolve, reject) => {
     const img = new Image();
     img.onload = () => {
-      const minWidth = 300;  // Minimum width in pixels
-      const minHeight = 100; // Minimum height for a signature
+      const minWidth = 100;  // Minimum width in pixels
+      const minHeight = 50; // Minimum height for a signature
       if (img.width < minWidth || img.height < minHeight) {
         reject(new Error('Image resolution too low for accurate analysis. Please provide a higher quality image.'));
       }
-      if (file.size < 10000) { // 10KB
+      if (file.size < 1000) { // 1KB
         reject(new Error('Image file size too small. This may indicate a low-quality image.'));
       }
       resolve(true);
@@ -472,4 +472,5 @@ reportButton.addEventListener('click', async () => {
 
 // Initial state
 checkInputs();
+
 
